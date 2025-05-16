@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widget de Calidad del Aire</title>
+    <!-- Incluir jQuery si usas funciones jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Calidad del Aire en Beijing</h1>
+    
+    <!-- Configuración inicial del script -->
+    <script type="text/javascript" charset="utf-8">  
+        (function(w, d, t, f) {  
+            w[f] = w[f] || function(c, k, n) {  
+                s = w[f], k = s['k'] = (s['k'] || (k ? ('&k=' + k) : '')); s['c'] =  
+                    c = (c instanceof Array) ? c : [c]; s['n'] = n = n || 0; L = d.createElement(t), e = d.getElementsByTagName(t)[0];  
+                L.async = 1; L.src = '//feed.aqicn.org/feed/' + (c[n].city) + '/' + (c[n].lang || '') + '/feed.v1.js?n=' + n + k;  
+                e.parentNode.insertBefore(L, e);  
+            };  
+        })(window, document, 'script', '_aqiFeed');    
+    </script>
+    
+    <!-- Ejemplo básico -->
+    <h2>Widget Básico</h2>
+    <span id="city-aqi-container"></span>
+    <script type="text/javascript" charset="utf-8">  
+        _aqiFeed({ container: "city-aqi-container", city: "beijing" });  
+    </script>
+    
+    <!-- Ejemplo con idioma específico -->
+    <h2>Widget en Chino</h2>
+    <span id="city-aqi-container-cn"></span>
+    <script type="text/javascript" charset="utf-8">  
+        _aqiFeed({
+            container: "city-aqi-container-cn",
+            city: "beijing",
+            lang: "cn"
+        });
+    </script>
+    
+    <!-- Ejemplo con formato personalizado -->
+    <h2>Widget con Formato Personalizado</h2>
+    <span id="city-aqi-container-display"></span>
+    <script type="text/javascript" charset="utf-8">  
+        _aqiFeed({    
+            display: "%cityname AQI is %aqi<br><small>on %date</small>",  
+            container: "city-aqi-container-display",    
+            city: "beijing"  
+        });  
+    </script>
+    
+    <!-- Ejemplo con callback -->
+    <h2>Widget con Callback (datos en consola)</h2>
+    <div id='my-container'></div>
+    <script type="text/javascript" charset="utf-8">  
+        _aqiFeed({  
+            city: "beijing", 
+            lang: "pl", 
+            callback: function(aqi) {  
+                console.log("Datos completos del AQI:", aqi);
+                $("#my-container").html(aqi.details);  
+            }  
+        });  
+    </script>
+    
+    <!-- Ejemplo con múltiples ciudades -->
+    <h2>Múltiples Ciudades</h2>
+    <div id="mutiple-city-aqi" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;"></div>
+    <script type="text/javascript" charset="utf-8">
+        var cities = ["london", "newyork", "seoul", "guangzhou", "tokyo", "shanghai", "paris", "hongkong"];
+        
+        var aqiWidgetConfig = [];    
+        cities.forEach(function(city) { 
+            aqiWidgetConfig.push({
+                city: city, 
+                callback: displayCity
+            });  
+        });
+        
+        _aqiFeed(aqiWidgetConfig);
+        
+        function displayCity(aqi) {
+            $("#mutiple-city-aqi").append(
+                aqi.text("<div style='border: 1px solid #ccc; padding: 10px; border-radius: 5px;'><center>%cityname<br><strong>%aqi</strong><br><small>%date</small></center></div>")
+            );
+        }
+    </script>
+</body>
+</html>
