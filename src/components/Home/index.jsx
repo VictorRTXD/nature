@@ -4,6 +4,8 @@ import { ChevronLeft, ChevronRight, Globe, Sprout, Droplet, Sun } from "lucide-r
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   
+  console.log("Realizado por Victor Eduardo Macias Macias y Armando Gomez Camarena");
+  
   const carouselItems = [
     {
       title: "Construyendo un Futuro Sostenible",

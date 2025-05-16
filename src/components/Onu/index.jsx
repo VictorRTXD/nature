@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Globe, ExternalLink, Info, X, ArrowLeft, ArrowRight } from "lucide-react";
 
-// Datos de los objetivos con colores específicos para cada ODS
+// Datos de los objetivos con colores específicos para cada ODS y metas personalizadas
 const objectives = [
   {
     id: 1,
@@ -12,7 +12,12 @@ const objectives = [
     textColor: "text-red-200",
     borderColor: "border-red-600",
     gradient: "from-red-900 to-red-700",
-    icon: "💰"
+    icon: "💰",
+    metas: [
+      "Erradicar la pobreza extrema para todas las personas en el mundo.",
+      "Reducir al menos a la mitad la proporción de personas que viven en pobreza.",
+      "Implementar sistemas y medidas apropiadas de protección social para todos."
+    ]
   },
   {
     id: 2,
@@ -23,7 +28,12 @@ const objectives = [
     textColor: "text-amber-200",
     borderColor: "border-amber-600",
     gradient: "from-amber-900 to-amber-700",
-    icon: "🌾"
+    icon: "🌾",
+    metas: [
+      "Poner fin al hambre y asegurar el acceso a una alimentación nutritiva para todas las personas.",
+      "Duplicar la productividad agrícola y los ingresos de los productores de alimentos en pequeña escala.",
+      "Mantener la diversidad genética de las semillas y garantizar el acceso a los recursos."
+    ]
   },
   {
     id: 3, 
@@ -34,7 +44,12 @@ const objectives = [
     textColor: "text-green-200",
     borderColor: "border-green-600",
     gradient: "from-green-900 to-green-700",
-    icon: "❤️"
+    icon: "❤️",
+    metas: [
+      "Reducir la tasa mundial de mortalidad materna a menos de 70 por cada 100.000 nacidos vivos.",
+      "Poner fin a las epidemias del SIDA, la tuberculosis, la malaria y las enfermedades tropicales desatendidas.",
+      "Reducir en un tercio la mortalidad prematura por enfermedades no transmisibles."
+    ]
   },
   {
     id: 4,
@@ -45,7 +60,12 @@ const objectives = [
     textColor: "text-rose-200",
     borderColor: "border-rose-600",
     gradient: "from-rose-900 to-rose-700",
-    icon: "📚"
+    icon: "📚",
+    metas: [
+      "Asegurar que todas las niñas y niños terminen la enseñanza primaria y secundaria gratuita, equitativa y de calidad.",
+      "Aumentar sustancialmente el número de jóvenes y adultos con competencias técnicas y profesionales.",
+      "Eliminar las disparidades de género en la educación y garantizar acceso igualitario."
+    ]
   },
   {
     id: 5,
@@ -56,7 +76,12 @@ const objectives = [
     textColor: "text-orange-200",
     borderColor: "border-orange-600",
     gradient: "from-orange-900 to-orange-700",
-    icon: "⚖️"
+    icon: "⚖️",
+    metas: [
+      "Poner fin a todas las formas de discriminación contra todas las mujeres y las niñas.",
+      "Eliminar todas las formas de violencia contra todas las mujeres y las niñas.",
+      "Asegurar la participación plena y efectiva de las mujeres en la vida política, económica y pública."
+    ]
   },
   {
     id: 6,
@@ -67,7 +92,12 @@ const objectives = [
     textColor: "text-blue-200",
     borderColor: "border-blue-600",
     gradient: "from-blue-900 to-blue-700",
-    icon: "💧"
+    icon: "💧",
+    metas: [
+      "Lograr el acceso universal y equitativo al agua potable a un precio asequible para todos.",
+      "Mejorar la calidad del agua reduciendo la contaminación y las aguas residuales no tratadas.",
+      "Aumentar la utilización eficiente de los recursos hídricos y asegurar la sostenibilidad de la extracción."
+    ]
   },
   {
     id: 7,
@@ -78,7 +108,12 @@ const objectives = [
     textColor: "text-yellow-200",
     borderColor: "border-yellow-600",
     gradient: "from-yellow-900 to-yellow-700",
-    icon: "⚡"
+    icon: "⚡",
+    metas: [
+      "Garantizar el acceso universal a servicios energéticos asequibles, fiables y modernos.",
+      "Aumentar considerablemente la proporción de energía renovable en el conjunto de fuentes energéticas.",
+      "Duplicar la tasa mundial de mejora de la eficiencia energética."
+    ]
   },
   {
     id: 8,
@@ -89,7 +124,12 @@ const objectives = [
     textColor: "text-purple-200",
     borderColor: "border-purple-600",
     gradient: "from-purple-900 to-purple-700",
-    icon: "📈"
+    icon: "📈",
+    metas: [
+      "Mantener el crecimiento económico per cápita de conformidad con las circunstancias nacionales.",
+      "Lograr niveles más elevados de productividad económica mediante la diversificación e innovación.",
+      "Promover políticas orientadas al desarrollo que apoyen las actividades productivas y la creación de empleo decente."
+    ]
   },
   {
     id: 9,
@@ -100,7 +140,12 @@ const objectives = [
     textColor: "text-indigo-200",
     borderColor: "border-indigo-600",
     gradient: "from-indigo-900 to-indigo-700",
-    icon: "🏭"
+    icon: "🏭",
+    metas: [
+      "Desarrollar infraestructuras fiables, sostenibles, resilientes y de calidad.",
+      "Aumentar el acceso de las pequeñas industrias a los servicios financieros y su integración en las cadenas de valor.",
+      "Aumentar la investigación científica y mejorar la capacidad tecnológica de los sectores industriales."
+    ]
   },
   {
     id: 10,
@@ -111,7 +156,12 @@ const objectives = [
     textColor: "text-pink-200",
     borderColor: "border-pink-600",
     gradient: "from-pink-900 to-pink-700",
-    icon: "🤝"
+    icon: "🤝",
+    metas: [
+      "Lograr progresivamente y mantener el crecimiento de los ingresos del 40% más pobre de la población.",
+      "Potenciar y promover la inclusión social, económica y política de todas las personas.",
+      "Garantizar la igualdad de oportunidades y reducir la desigualdad de resultados."
+    ]
   },
   {
     id: 11,
@@ -122,7 +172,12 @@ const objectives = [
     textColor: "text-amber-200",
     borderColor: "border-amber-600",
     gradient: "from-amber-900 to-amber-700",
-    icon: "🏙️"
+    icon: "🏙️",
+    metas: [
+      "Asegurar el acceso de todas las personas a viviendas y servicios básicos adecuados, seguros y asequibles.",
+      "Proporcionar acceso a sistemas de transporte seguros, asequibles, accesibles y sostenibles para todos.",
+      "Aumentar la urbanización inclusiva y sostenible y la capacidad para la planificación participativa."
+    ]
   },
   {
     id: 12,
@@ -133,7 +188,12 @@ const objectives = [
     textColor: "text-emerald-200",
     borderColor: "border-emerald-600",
     gradient: "from-emerald-900 to-emerald-700",
-    icon: "♻️"
+    icon: "♻️",
+    metas: [
+      "Aplicar el Marco Decenal de Programas sobre Modalidades de Consumo y Producción Sostenibles.",
+      "Lograr la gestión sostenible y el uso eficiente de los recursos naturales.",
+      "Reducir a la mitad el desperdicio de alimentos per cápita mundial."
+    ]
   },
   {
     id: 13,
@@ -144,7 +204,12 @@ const objectives = [
     textColor: "text-teal-200",
     borderColor: "border-teal-600",
     gradient: "from-teal-900 to-teal-700",
-    icon: "🌍"
+    icon: "🌍",
+    metas: [
+      "Fortalecer la resiliencia y la capacidad de adaptación a los riesgos relacionados con el clima.",
+      "Incorporar medidas relativas al cambio climático en las políticas, estrategias y planes nacionales.",
+      "Mejorar la educación y la sensibilización respecto al cambio climático."
+    ]
   },
   {
     id: 14,
@@ -155,7 +220,12 @@ const objectives = [
     textColor: "text-cyan-200",
     borderColor: "border-cyan-600",
     gradient: "from-cyan-900 to-cyan-700",
-    icon: "🐋"
+    icon: "🐋",
+    metas: [
+      "Prevenir y reducir significativamente la contaminación marina de todo tipo.",
+      "Gestionar y proteger sosteniblemente los ecosistemas marinos y costeros.",
+      "Minimizar y abordar los efectos de la acidificación de los océanos."
+    ]
   },
   {
     id: 15,
@@ -166,7 +236,12 @@ const objectives = [
     textColor: "text-lime-200",
     borderColor: "border-lime-600",
     gradient: "from-lime-900 to-lime-700",
-    icon: "🌳"
+    icon: "🌳",
+    metas: [
+      "Velar por la conservación, el restablecimiento y el uso sostenible de los ecosistemas terrestres.",
+      "Luchar contra la desertificación, rehabilitar las tierras y los suelos degradados.",
+      "Adoptar medidas urgentes para reducir la degradación de los hábitats naturales."
+    ]
   },
   {
     id: 16,
@@ -177,7 +252,12 @@ const objectives = [
     textColor: "text-blue-200",
     borderColor: "border-blue-600",
     gradient: "from-blue-900 to-blue-700",
-    icon: "☮️"
+    icon: "☮️",
+    metas: [
+      "Reducir significativamente todas las formas de violencia y las correspondientes tasas de mortalidad.",
+      "Poner fin al maltrato, la explotación, la trata y todas las formas de violencia contra los niños.",
+      "Promover el estado de derecho y garantizar la igualdad de acceso a la justicia para todos."
+    ]
   },
   {
     id: 17,
@@ -188,7 +268,12 @@ const objectives = [
     textColor: "text-violet-200",
     borderColor: "border-violet-600",
     gradient: "from-violet-900 to-violet-700",
-    icon: "🤲"
+    icon: "🤲",
+    metas: [
+      "Fortalecer la movilización de recursos internos para mejorar la capacidad nacional de recaudación de ingresos.",
+      "Velar por que los países desarrollados cumplan sus compromisos de asistencia oficial para el desarrollo.",
+      "Aumentar el apoyo internacional para realizar actividades de creación de capacidades eficaces y específicas."
+    ]
   },
 ];
 
@@ -339,11 +424,9 @@ const ObjetivosDesarrolloSostenible = () => {
             <ArrowRight className="w-5 h-5" />
           </button>
         </div>
-
-        {/* Llamada a la acción */}
       </div>
        {/* Footer */}
-      <footer  className="bg-slate-900/80 border-t border-slate-800 py-10 mt-16">
+      <footer className="bg-slate-900/80 border-t border-slate-800 py-10 mt-16">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center mb-10">
             <div className="text-center md:text-left mb-6 md:mb-0">
@@ -394,18 +477,12 @@ const ObjetivosDesarrolloSostenible = () => {
               <div className="bg-black bg-opacity-20 p-5 rounded-lg mb-8">
                 <h4 className="font-semibold mb-3 text-white">Metas importantes:</h4>
                 <ul className="space-y-2 text-white/90">
-                  <li className="flex items-start">
-                    <span className="mr-2 mt-1">•</span>
-                    <span>Implementar medidas específicas para {selectedObjective.id < 10 ? "abordar" : "promover"} este objetivo a nivel nacional.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2 mt-1">•</span>
-                    <span>Desarrollar políticas coherentes para el desarrollo sostenible.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2 mt-1">•</span>
-                    <span>Asegurar la movilización de recursos desde múltiples fuentes.</span>
-                  </li>
+                  {selectedObjective.metas.map((meta, index) => (
+                    <li key={index} className="flex items-start">
+                      <span className="mr-2 mt-1">•</span>
+                      <span>{meta}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
               
