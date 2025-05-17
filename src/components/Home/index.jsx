@@ -111,14 +111,6 @@ export default function Home() {
             <p className="text-gray-300 mb-4">
               Utilizando materiales reciclados y técnicas sostenibles, podemos contribuir a la seguridad alimentaria, reducir nuestra huella de carbono y promover estilos de vida más conscientes con el medio ambiente.
             </p>
-            <div className="mt-8">
-              <a href="/buenas-practicas" className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-6 rounded-lg mr-4 inline-block transition">
-                Buenas Prácticas
-              </a>
-              <a href="/estadisticas" className="bg-transparent border-2 border-teal-500 hover:border-teal-400 text-teal-300 font-bold py-3 px-6 rounded-lg inline-block transition">
-                Ver Estadísticas
-              </a>
-            </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-green-900 bg-opacity-40 p-6 rounded-lg">

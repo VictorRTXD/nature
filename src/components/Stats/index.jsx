@@ -450,7 +450,11 @@ export default function WeatherApp() {
               ))}
             </div>
           </div>
-          <footer style={{ width: "75vw" }}  className="bg-slate-900/80 border-t border-slate-800 py-10 mt-16">
+        </div>
+      )}
+      
+      {/* Footer */}
+      <footer className="bg-slate-900/80 border-t border-slate-800 py-10 mt-16">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center mb-10">
             <div className="text-center md:text-left mb-6 md:mb-0">
@@ -471,8 +475,6 @@ export default function WeatherApp() {
           </div>
         </div>
       </footer>
-        </div>
-      )}
     </div>
   );
 }
